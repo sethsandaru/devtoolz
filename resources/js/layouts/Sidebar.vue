@@ -26,34 +26,21 @@
         >
           <!-- Nav items -->
           <ul class="navbar-nav">
-            <li class="nav-item">
+            <li
+              v-for="navItem in navigationItems"
+              :key="navItem.label"
+              class="nav-item"
+            >
               <router-link
                 class="nav-link"
-                to="/json-viewer"
+                :to="navItem.path"
                 active-class="active"
               >
-                <i class="ni ni-album-2 text-dark"></i>
-                <span class="nav-link-text text-dark">JSON Viewer</span>
-              </router-link>
-            </li>
-            <li class="nav-item">
-              <router-link
-                class="nav-link"
-                to="/encryptor"
-                active-class="active"
-              >
-                <i class="ni ni-lock-circle-open text-dark"></i>
-                <span class="nav-link-text text-dark">Encryptors</span>
-              </router-link>
-            </li>
-            <li class="nav-item">
-              <router-link
-                class="nav-link"
-                to="/info-generator"
-                active-class="active"
-              >
-                <i class="ni ni-briefcase-24 text-dark"></i>
-                <span class="nav-link-text text-dark">Info generator</span>
+                <i
+                  class="ni text-dark"
+                  :class="navItem.icon"
+                />
+                <span class="nav-link-text text-dark">{{ navItem.label }}</span>
               </router-link>
             </li>
           </ul>
@@ -62,3 +49,21 @@
     </div>
   </nav>
 </template>
+
+<script setup lang="ts">
+type NavigationItem = {
+  label: string;
+  path: string;
+  icon: string;
+};
+
+const navigationItems: NavigationItem[] = [
+  { label: 'JSON Viewer', icon: 'ni-album-2', path: '/json-viewer' },
+  { label: 'Encryptors', icon: 'ni-lock-circle-open', path: '/encryptor' },
+  { label: 'Random IDs', icon: 'ni-settings', path: '/identifiers' },
+  { label: 'Info generator', icon: 'ni-briefcase-24', path: '/info-generator' },
+  { label: 'CSV to JSON', icon: 'ni-books', path: '/csv-to-json' },
+  { label: 'JSON to CSV', icon: 'ni-single-copy-04', path: '/json-to-csv' },
+  { label: 'HTML to PDF', icon: 'ni-collection', path: '/html-to-pdf' },
+];
+</script>
