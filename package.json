@@ -17,6 +17,7 @@
     "dependencies": {
         "typescript": "^5.2.2",
         "vue": "^3.2.36",
-        "vue-loader": "^17.2.2"
+        "vue-loader": "^17.2.2",
+        "vue-router": "^4.0.13"
     }
 }

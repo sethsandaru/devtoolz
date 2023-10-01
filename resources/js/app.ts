@@ -1,5 +1,10 @@
-type Abc = {anh: string};
+import { createApp } from 'vue';
+import '../css/app.css';
+import App from './App.vue';
+import router from './router';
 
-const x : Abc = {anh: 'aaa'}
+const app = createApp(App);
 
-console.log('Here we are', x);
+app.use(router);
+
+app.mount('#app');

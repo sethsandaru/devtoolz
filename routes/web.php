@@ -13,6 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/{any?}', function (?string $route = '') {
+    $pageInfos = [
+        'json-viewer' => [
+            'title' => 'JSON Viewer',
+            'description' => 'Minimalism JSON Viewer',
+        ],
+    ];
+
+    return view('app', [
+        'title' => $pageInfos[$route]['title'] ?? null,
+        'description' => $pageInfos[$route]['description'] ?? null,
+    ]);
+})->where('any', '.*');
