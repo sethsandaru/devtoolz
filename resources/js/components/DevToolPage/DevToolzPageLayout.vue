@@ -1,13 +1,11 @@
 <template>
-  <div
-    class="header header-dark bg-primary pb-6 content__title content__title--calendar"
-  >
+  <div class="header header-dark bg-gradient-gray-dark pb-6">
     <div class="container-fluid">
       <div class="header-body">
         <div class="row align-items-center py-4">
           <div class="col-lg-6">
-            <h6 class="fullcalendar-title h2 text-white d-inline-block mb-0">
-              Full calendar
+            <h6 class="h2 text-white d-inline-block mb-0">
+              {{ pageTitle }}
             </h6>
             <nav
               aria-label="breadcrumb"
@@ -15,49 +13,19 @@
             >
               <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                 <li class="breadcrumb-item">
-                  <a href="#"><i class="fas fa-home"></i></a>
+                  <a href="/"><i class="ni ni-shop"></i></a>
                 </li>
-                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
                 <li
                   class="breadcrumb-item active"
                   aria-current="page"
                 >
-                  Calendar
+                  {{ pageTitle }}
                 </li>
               </ol>
             </nav>
           </div>
           <div class="col-lg-6 mt-3 mt-lg-0 text-lg-right">
-            <a
-              href="#"
-              class="fullcalendar-btn-prev btn btn-sm btn-neutral"
-            >
-              <i class="fas fa-angle-left"></i>
-            </a>
-            <a
-              href="#"
-              class="fullcalendar-btn-next btn btn-sm btn-neutral"
-            >
-              <i class="fas fa-angle-right"></i>
-            </a>
-            <a
-              href="#"
-              class="btn btn-sm btn-neutral"
-              data-calendar-view="month"
-              >Month</a
-            >
-            <a
-              href="#"
-              class="btn btn-sm btn-neutral"
-              data-calendar-view="basicWeek"
-              >Week</a
-            >
-            <a
-              href="#"
-              class="btn btn-sm btn-neutral"
-              data-calendar-view="basicDay"
-              >Day</a
-            >
+            <slot name="header-right" />
           </div>
         </div>
       </div>
@@ -65,11 +33,21 @@
   </div>
   <div class="container-fluid mt--6">
     <slot />
-    <Footer />
   </div>
 </template>
 
-<style scoped></style>
 <script setup lang="ts">
-import Footer from '../../layouts/Footer.vue';
+import { onMounted } from 'vue';
+
+type DevToolzPageLayoutProps = {
+  pageTitle: string;
+};
+
+const props = defineProps<DevToolzPageLayoutProps>();
+
+onMounted(() => {
+  document.title = `${props.pageTitle} - DevToolz from Seth Phat`;
+});
 </script>
+
+<style scoped></style>
