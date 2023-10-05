@@ -99,9 +99,22 @@ const deleteRecord = (id: string) => {
     return;
   }
 
+  const isCurrentRecord = id === activeRecord.value?.id;
+
   jsonRecords.value.splice(currentRecordIdx, 1);
 
   storeAllToStorage(jsonRecords.value);
+
+  // if we deleted all records, create a brand new one
+  // we always need to have a record
+  if (jsonRecords.value.length === 0) {
+    return addNewRecord();
+  }
+
+  // when we delete the current viewing record, set it back to 0
+  if (isCurrentRecord) {
+    selectedRecord(jsonRecords.value[0]);
+  }
 };
 
 onMounted(() => {
@@ -114,7 +127,7 @@ onMounted(() => {
     addNewRecord();
   } else {
     const defaultRecord = historyRecords.find((record) => !!record.isActive);
-    activeRecord.value = { ...(defaultRecord || historyRecords[0]) };
+    selectedRecord(defaultRecord || historyRecords[0]);
   }
 });
 </script>

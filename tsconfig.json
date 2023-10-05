@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "ESNext",
+    "module": "ES2020",
     "composite": true,
     "sourceMap": false,
     "resolveJsonModule": true,

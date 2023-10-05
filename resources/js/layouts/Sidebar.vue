@@ -12,7 +12,7 @@
           href="/"
         >
           <img
-            src="/assets/images/logo.png"
+            src="../../images/logo.png"
             class="navbar-brand-img"
             alt="DevToolz from Seth Phat"
           />

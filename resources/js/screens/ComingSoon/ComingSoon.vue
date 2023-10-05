@@ -3,7 +3,7 @@
     <DevToolCard title="Not implemented yet - DevToolz ⚒️">
       <div class="d-flex justify-content-center m-2">
         <img
-          src="/assets/images/logo.png"
+          src="/resources/images/logo.png"
           class="w-25"
           alt="DevToolz's Logo"
         />

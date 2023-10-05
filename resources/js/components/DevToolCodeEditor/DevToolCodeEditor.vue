@@ -8,10 +8,11 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import * as monaco from 'monaco-editor';
 import { onUnmounted } from '@vue/runtime-core';
 import { debounce } from 'lodash';
 import { rescue } from '../../utils/rescue';
+import * as monaco from 'monaco-editor';
+import './userWorker';
 
 type DevToolCodeEditorProps = {
   language: 'javascript' | 'html' | 'json';

@@ -12,7 +12,7 @@
 </head>
 <body class="g-sidenav-show g-sidenav-pinned">
     <div id="app"></div>
-    @vite(['resources/js/app.ts'])
+    @vite('resources/js/app.ts')
     <noscript>
         <p>This site requires JavaScript to work.</p>
     </noscript>

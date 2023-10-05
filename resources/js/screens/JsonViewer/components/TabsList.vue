@@ -10,18 +10,18 @@
         class="nav-link"
         :class="{ active: tab.isActive }"
         href="javascript:void(0)"
-        @click="$emit('selected', tab)"
         title="Double click to rename"
       >
         <span
           class="mr-2"
+          @click="$emit('selected', tab)"
           @dblclick="setEditMode(tab)"
         >
           {{ tab.title }}
         </span>
         <i
           class="ni ni-fat-remove text-lg text-red"
-          @click="deleteRecord(tab)"
+          @click="deleteRecord(tab, $event)"
         />
       </a>
       <a
@@ -94,7 +94,9 @@ const submitEdit = () => {
   setCancelEditMode();
 };
 
-const deleteRecord = (item: JsonViewerRecord) => {
+const deleteRecord = (item: JsonViewerRecord, event: Event) => {
+  event.preventDefault();
+
   if (
     !confirm(
       'Do you really want to delete this record? You will not be able to recover the data'
