@@ -10,6 +10,15 @@
     </div>
     <div class="d-flex flex-column">
       <h3>Beautifier JSON</h3>
+      <div
+        v-if="parseJsonError"
+        class="alert alert-warning alert-dismissible fade show"
+        role="alert"
+      >
+        <span class="alert-text">
+          <strong>Parse Error:</strong> {{ parseJsonError }}
+        </span>
+      </div>
       <DevToolCodeEditor
         :key="beautifierJsonString"
         :model-value="beautifierJsonString"
@@ -36,13 +45,18 @@ const props = defineProps<JsonViewerEditorProps>();
 const emits = defineEmits<JsonViewerEditorEmits>();
 
 const beautifierJsonString = ref<string>('{}');
+const parseJsonError = ref<string>();
 
 const makeUpJson = (value: string) => {
   try {
     const obj = JSON.parse(value);
 
+    parseJsonError.value = '';
     beautifierJsonString.value = JSON.stringify(obj, null, 2);
-  } catch (e) {}
+  } catch (e) {
+    parseJsonError.value =
+      e instanceof Error ? e.message : 'Parse JSON failed.';
+  }
 };
 
 const onValueChanges = (value: string) => {

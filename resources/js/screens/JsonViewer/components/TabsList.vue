@@ -20,7 +20,7 @@
           {{ tab.title }}
         </span>
         <i
-          class="ni ni-fat-remove text-red"
+          class="ni ni-fat-remove text-lg text-red"
           @click="deleteRecord(tab)"
         />
       </a>
