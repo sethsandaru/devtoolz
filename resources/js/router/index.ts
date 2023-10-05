@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
+const ComingSoonPage = () => import('../screens/ComingSoon/ComingSoon.vue');
+
 export const routes = [
   {
     path: '/',
@@ -10,6 +12,31 @@ export const routes = [
     path: '/json-viewer',
     name: 'json-viewer',
     component: () => import('../screens/JsonViewer/JsonViewer.vue'),
+  },
+  {
+    path: '/identifiers',
+    name: 'identifiers',
+    component: () => import('../screens/RandomIds/RandomIds.vue'),
+  },
+  {
+    path: '/info-generator',
+    name: 'info-generator',
+    component: ComingSoonPage,
+  },
+  {
+    path: '/csv-to-json',
+    name: 'csv-to-json',
+    component: ComingSoonPage,
+  },
+  {
+    path: '/json-to-csv',
+    name: 'json-to-csv',
+    component: ComingSoonPage,
+  },
+  {
+    path: '/html-to-pdf',
+    name: 'html-to-pdf',
+    component: ComingSoonPage,
   },
 ];
 
