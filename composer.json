@@ -1,8 +1,8 @@
 {
-    "name": "laravel/laravel",
+    "name": "sethsandaru/devtoolz",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "description": "Opinionated DevToolz to increase/skyrocket the Development Experience (DX)",
+    "keywords": ["laravel", "devtool", "dev tools", "devtools", "development tools", "encryptor"],
     "license": "MIT",
     "require": {
         "php": "^8.1",
