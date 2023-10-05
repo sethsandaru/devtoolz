@@ -13,16 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/{any?}', function (?string $route = '') {
-    $pageInfos = [
-        'json-viewer' => [
-            'title' => 'JSON Viewer',
-            'description' => 'Minimalism JSON Viewer',
-        ],
-    ];
+Route::get('', fn () => view('app'));
 
-    return view('app', [
-        'title' => $pageInfos[$route]['title'] ?? null,
-        'description' => $pageInfos[$route]['description'] ?? null,
-    ]);
-})->where('any', '.*');
+Route::get('/json-viewer', fn () => view('app', [
+    'title' => 'JSON Viewer',
+    'description' => 'Minimalism JSON Viewer',
+]));
+
+Route::get('/encryptor', fn () => view('app', [
+    'title' => 'Encryptor helper',
+    'description' => 'Encrypt your desired value in multiple hashing algorithms',
+]));
+
+Route::get('/identifiers', fn () => view('app', [
+    'title' => 'Random IDs',
+    'description' => 'Quickly generate popular identifiers in no time',
+]));

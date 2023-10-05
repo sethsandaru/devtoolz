@@ -32,4 +32,9 @@
 
 <script setup lang="ts">
 import DevToolCard from '../../components/DevToolCard/DevToolCard.vue';
+import { onBeforeMount } from 'vue';
+
+onBeforeMount(() => {
+  document.title = `Coming soon - DevToolz from Seth Phat`;
+});
 </script>

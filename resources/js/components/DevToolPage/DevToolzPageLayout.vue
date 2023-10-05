@@ -37,7 +37,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { onBeforeMount } from 'vue';
 
 type DevToolzPageLayoutProps = {
   pageTitle: string;
@@ -45,7 +45,7 @@ type DevToolzPageLayoutProps = {
 
 const props = defineProps<DevToolzPageLayoutProps>();
 
-onMounted(() => {
+onBeforeMount(() => {
   document.title = `${props.pageTitle} - DevToolz from Seth Phat`;
 });
 </script>

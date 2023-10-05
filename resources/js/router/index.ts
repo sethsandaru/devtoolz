@@ -19,6 +19,11 @@ export const routes = [
     component: () => import('../screens/RandomIds/RandomIds.vue'),
   },
   {
+    path: '/encryptor',
+    name: 'encryptor',
+    component: () => import('../screens/Encryptor/Encryptor.vue'),
+  },
+  {
     path: '/info-generator',
     name: 'info-generator',
     component: ComingSoonPage,

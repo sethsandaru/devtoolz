@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EncryptorController;
 use App\Http\Controllers\RandomIdsController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('random-ids', [RandomIdsController::class, 'random']);
+Route::post('encrypt', [EncryptorController::class, 'encrypt']);
