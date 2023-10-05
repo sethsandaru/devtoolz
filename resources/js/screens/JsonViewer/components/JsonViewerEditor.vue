@@ -22,7 +22,7 @@
 
 <script setup lang="ts">
 import DevToolCodeEditor from '../../../components/DevToolCodeEditor/DevToolCodeEditor.vue';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 
 type JsonViewerEditorProps = {
   modelValue: string;
@@ -32,20 +32,27 @@ type JsonViewerEditorEmits = {
   (e: 'update:modelValue', value: string): void;
 };
 
-defineProps<JsonViewerEditorProps>();
+const props = defineProps<JsonViewerEditorProps>();
 const emits = defineEmits<JsonViewerEditorEmits>();
 
 const beautifierJsonString = ref<string>('{}');
 
-const onValueChanges = (value: string) => {
-  emits('update:modelValue', value);
-
+const makeUpJson = (value: string) => {
   try {
     const obj = JSON.parse(value);
 
     beautifierJsonString.value = JSON.stringify(obj, null, 2);
   } catch (e) {}
 };
+
+const onValueChanges = (value: string) => {
+  emits('update:modelValue', value);
+  makeUpJson(value);
+};
+
+onMounted(() => {
+  makeUpJson(props.modelValue);
+});
 </script>
 
 <style scoped>

@@ -10,3 +10,9 @@ export const getAllFromStorage = (): JsonViewerRecord[] => {
 
   return JSON.parse(data) as JsonViewerRecord[];
 };
+
+export const storeAllToStorage = (records: JsonViewerRecord[]): void => {
+  const data = JSON.stringify(records);
+
+  localStorage.setItem(STORAGE_KEY, data);
+};
