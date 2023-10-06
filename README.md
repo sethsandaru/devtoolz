@@ -7,7 +7,7 @@ I'm proud to use this every day and share it with the whole world under OSS aura
 
 No ADS, no tracking, OnlyTools 👀
 
-Live at: [https://toolz.sethphat.dev](https://toolz.sethphat.dev) 😎
+Live at: [https://tools.sethphat.dev/](https://tools.sethphat.dev/) 😎
 
 ![screenshot.png](public/screenshot.png)
 
