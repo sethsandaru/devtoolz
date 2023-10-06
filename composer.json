@@ -1,6 +1,7 @@
 {
     "name": "sethsandaru/devtoolz",
     "type": "project",
+    "version": "0.0.1",
     "description": "Opinionated DevToolz to increase/skyrocket the Development Experience (DX)",
     "keywords": ["laravel", "devtool", "dev tools", "devtools", "development tools", "encryptor"],
     "license": "MIT",
