@@ -1,6 +1,6 @@
 name: Push DevToolz Image
 env:
-  IMAGE: 'sethsandaru/docking-dev'
+  IMAGE: 'sethsandaru/devtoolz'
   REGISTRY: ghcr.io
 
 on:
@@ -47,7 +47,7 @@ jobs:
           if: success()
           run: |
             composer install --no-interaction
-            echo "$DEV_IMAGE_ENV" > .env
+            echo "${{ secrets.DOCKERENV }}" > .env
             php artisan key:generate
 
             npm ci && npm run build
