@@ -25,8 +25,6 @@ RUN composer install --optimize-autoloader --no-dev \
     && cp .fly/entrypoint.sh /entrypoint \
     && chmod +x /entrypoint
 
-RUN php artisan key:generate
-
 # If we're using Octane...
 RUN if grep -Fq "laravel/octane" /var/www/html/composer.json; then \
         rm -rf /etc/supervisor/conf.d/fpm.conf; \
