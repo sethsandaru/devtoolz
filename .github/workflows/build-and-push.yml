@@ -1,4 +1,4 @@
-name: Push Docker Dev Image
+name: Push DevToolz Image
 env:
   IMAGE: 'sethsandaru/docking-dev'
   REGISTRY: ghcr.io
