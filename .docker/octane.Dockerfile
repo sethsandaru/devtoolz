@@ -6,7 +6,6 @@ COPY --from=roadrunner /usr/bin/rr /usr/local/bin/rr
 WORKDIR /var/www/html
 
 RUN apt-get update && apt-get install -y \
-    git \
     curl \
     libpng-dev \
     libonig-dev \
@@ -24,8 +23,6 @@ COPY . .
 COPY ./.docker/supervisord.conf /etc/supervisor/conf.d/
 COPY ./.docker/nginx.conf /etc/nginx/conf.d/default.conf
 
-RUN rm -rf ./node_modules
-RUN php artisan optimize
 RUN chown -R www-data:www-data storage
 RUN chown -R www-data:www-data storage/app
 RUN chmod -R 777 storage/logs

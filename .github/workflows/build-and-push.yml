@@ -2,6 +2,7 @@ name: Push DevToolz Image
 env:
   IMAGE: 'sethsandaru/devtoolz'
   REGISTRY: ghcr.io
+  DEV_IMAGE_ENV: ${{ secrets.DOCKERENV }}
 
 on:
   release:
@@ -25,7 +26,7 @@ jobs:
             username: ${{ github.actor }}
             password: ${{ secrets.GITHUB_TOKEN }}
 
-      -   name: Extract metadata (tags, labels) for Normal Image
+      -   name: Extract metadata (tags, labels)
           id: meta
           uses: docker/metadata-action@v2
           with:
@@ -47,10 +48,15 @@ jobs:
           if: success()
           run: |
             composer install --no-interaction
-            echo "${{ secrets.DOCKERENV }}" > .env
+            echo "$DEV_IMAGE_ENV" > .env
+
             php artisan key:generate
+            php artisan optimize
 
             npm ci && npm run build
+
+            # We don't need this after the build
+            rm -rf node_modules/
 
       -   name: Build and push Docker
           uses: docker/build-push-action@v4
