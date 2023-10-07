@@ -94,6 +94,7 @@ const navigationItems: NavigationItem[] = [
   { label: 'CSV to JSON', icon: 'ni-books', path: '/csv-to-json' },
   { label: 'JSON to CSV', icon: 'ni-single-copy-04', path: '/json-to-csv' },
   { label: 'HTML to PDF', icon: 'ni-collection', path: '/html-to-pdf' },
+  { label: 'REM <=> PX', icon: 'ni-atom', path: '/rem-and-px' },
 ];
 
 const visibleItems = ref([...navigationItems]);

@@ -43,6 +43,11 @@ export const routes = [
     name: 'html-to-pdf',
     component: ComingSoonPage,
   },
+  {
+    path: '/rem-and-px',
+    name: 'rem-and-px',
+    component: () => import('../screens/RemPx/RemPx.vue'),
+  },
 ];
 
 const router = createRouter({
