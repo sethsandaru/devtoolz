@@ -10,7 +10,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            src:
+              - 'app/**'
+              - 'config/**'
+              - 'resources/**'
+              - 'routes/**'
       - uses: superfly/flyctl-actions/setup-flyctl@master
+        if: steps.changes.outputs.src == 'true'
       - run: flyctl deploy --remote-only
+        if: steps.changes.outputs.src == 'true'
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+      - run: echo "halt due to no app changes related"
+        if: steps.changes.outputs.src == 'false'
