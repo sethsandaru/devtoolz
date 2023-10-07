@@ -8,7 +8,7 @@
     <meta property="og:title" content="{{ isset($title) ? "$title - " : "" }}DevToolz from Seth Phat">
     <meta property="og:description" content="{{ isset($description) ? "$description. " : "" }}Opinionated DevToolz to increase Development Experience (DX). Built from personal preferences.">
     <meta property="og:type" content="website">
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css /">
 </head>
 <body class="g-sidenav-show g-sidenav-pinned">
     <div id="app"></div>

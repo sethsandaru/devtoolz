@@ -1,7 +1,7 @@
 <template>
   <!-- Sidenav -->
   <nav
-    class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white"
+    class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-translucent-neutral"
     id="sidenav-main"
   >
     <div class="scrollbar-inner">
@@ -19,6 +19,22 @@
         </a>
       </div>
       <div class="navbar-inner">
+        <div class="form-group mt-1 mb-1">
+          <div class="input-group input-group-alternative input-group-merge">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="ni ni-compass-04"></i>
+              </span>
+            </div>
+            <input
+              v-model="search"
+              class="form-control text-dark"
+              placeholder="Search for Tool"
+              type="text"
+              @keyup="filterNavigation"
+            />
+          </div>
+        </div>
         <!-- Collapse -->
         <div
           class="collapse navbar-collapse"
@@ -27,7 +43,7 @@
           <!-- Nav items -->
           <ul class="navbar-nav">
             <li
-              v-for="navItem in navigationItems"
+              v-for="navItem in visibleItems"
               :key="navItem.label"
               class="nav-item"
             >
@@ -43,6 +59,17 @@
                 <span class="nav-link-text text-dark">{{ navItem.label }}</span>
               </router-link>
             </li>
+            <li
+              v-if="visibleItems.length === 0"
+              class="nav-item"
+            >
+              <a
+                href="javascript:void(0)"
+                class="nav-link"
+              >
+                No tool found 👀
+              </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -51,6 +78,8 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
+
 type NavigationItem = {
   label: string;
   path: string;
@@ -66,4 +95,15 @@ const navigationItems: NavigationItem[] = [
   { label: 'JSON to CSV', icon: 'ni-single-copy-04', path: '/json-to-csv' },
   { label: 'HTML to PDF', icon: 'ni-collection', path: '/html-to-pdf' },
 ];
+
+const visibleItems = ref([...navigationItems]);
+const search = ref('');
+
+const filterNavigation = () => {
+  const keyword = search.value || '';
+
+  visibleItems.value = [...navigationItems].filter((item) =>
+    item.label.toLowerCase().includes(keyword.toLowerCase())
+  );
+};
 </script>
