@@ -31,4 +31,9 @@ Route::get('/identifiers', fn () => view('app', [
     'description' => 'Quickly generate popular identifiers in no time',
 ]));
 
+Route::get('/rem-and-px', fn () => view('app', [
+    'title' => 'REM x PX conversion',
+    'description' => 'Quickly convert between REM and PX for faster Web UI development',
+]));
+
 Route::get('/sitemap.xml', [SitemapController::class, 'index']);

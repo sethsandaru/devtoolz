@@ -36,6 +36,12 @@ class SitemapController extends Controller
                 'priority' => 0.9,
                 'lastmod' => Carbon::now(),
             ],
+            [
+                'loc' => "$baseUrl/rem-and-px",
+                'changefreq' => 'weekly',
+                'priority' => 0.9,
+                'lastmod' => Carbon::now(),
+            ],
         ];
 
         return response()->view('sitemap', [
