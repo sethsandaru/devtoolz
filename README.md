@@ -1,5 +1,9 @@
 # The DevToolz Application
 
+<p align="center">
+    <img src="./public/logo-250.jpg" />
+</p>
+
 Opinionated DevToolz to increase/skyrocket the Development Experience (DX).
 Built from personal preferences and experience.
 
