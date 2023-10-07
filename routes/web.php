@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,3 +30,5 @@ Route::get('/identifiers', fn () => view('app', [
     'title' => 'Random IDs',
     'description' => 'Quickly generate popular identifiers in no time',
 ]));
+
+Route::get('/sitemap.xml', [SitemapController::class, 'index']);
