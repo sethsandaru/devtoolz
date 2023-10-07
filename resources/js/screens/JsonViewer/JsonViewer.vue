@@ -21,13 +21,20 @@
 <script setup lang="ts">
 import DevToolzPageLayout from '../../components/DevToolPage/DevToolzPageLayout.vue';
 import DevToolCard from '../../components/DevToolCard/DevToolCard.vue';
-import { onMounted, ref } from 'vue';
+import { defineAsyncComponent, onMounted, ref } from 'vue';
 import { JsonViewerRecord } from './JsonViewer.types';
 import * as JsonViewerMethods from './JsonViewer.methods';
 import TabsList from './components/TabsList.vue';
-import JsonViewerEditor from './components/JsonViewerEditor.vue';
+import DevToolGlobalLoading from '../../components/DevToolGlobalLoading/DevToolGlobalLoading.vue';
+import DevToolGlobalError from '../../components/DevToolGlobalError/DevToolGlobalError.vue';
 import { ulid } from 'ulid';
 import { storeAllToStorage } from './JsonViewer.methods';
+
+const JsonViewerEditor = defineAsyncComponent({
+  loader: () => import('./components/JsonViewerEditor.vue'),
+  loadingComponent: DevToolGlobalLoading,
+  errorComponent: DevToolGlobalError,
+});
 
 const jsonRecords = ref<JsonViewerRecord[]>([]);
 const activeRecord = ref<JsonViewerRecord>();
