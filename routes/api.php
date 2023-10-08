@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EncryptorController;
 use App\Http\Controllers\RandomIdsController;
+use App\Http\Controllers\RandomPersonController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,3 +18,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('random-ids', [RandomIdsController::class, 'random']);
 Route::post('encrypt', [EncryptorController::class, 'encrypt']);
+Route::post('random-person', [RandomPersonController::class, 'random']);

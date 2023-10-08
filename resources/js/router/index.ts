@@ -26,7 +26,7 @@ export const routes = [
   {
     path: '/info-generator',
     name: 'info-generator',
-    component: ComingSoonPage,
+    component: () => import('../screens/InfoGenerator/InfoGenerator.vue'),
   },
   {
     path: '/csv-to-json',
