@@ -6,7 +6,8 @@
 
         <br />
         <br />
-        P/s: only US info at the moment, we'll roll out other countries soon!
+        P/s: only US fake person info at the moment, we'll roll out other
+        countries soon!
       </p>
 
       <div>
