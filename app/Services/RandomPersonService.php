@@ -1,10 +1,20 @@
 <?php
 
 namespace App\Services;
+use Faker\Factory as FakerFactory;
+use Faker\Generator as Faker;
 use Faker\Provider\en_US\Address;
 
 class RandomPersonService
 {
+    private Faker $faker;
+
+    public function __construct()
+    {
+        $this->faker = FakerFactory::create();
+    }
+
+
     /**
      * Random data for a fake person in US
      *
@@ -12,21 +22,21 @@ class RandomPersonService
      */
     public function random(): array
     {
-        $firstName = fake()->firstName();
-        $lastName = fake()->lastName();
+        $firstName = $this->faker->firstName();
+        $lastName = $this->faker->lastName();
         $fullName = "$firstName $lastName";
-        $address = fake()->streetAddress();
-        $city = fake()->city();
+        $address = $this->faker->streetAddress();
+        $city = $this->faker->city();
         $zipCode = Address::postcode();
         $state = Address::stateAbbr();
         $country = 'US';
 
-        $creditCard = fake()->creditCardDetails();
+        $creditCard = $this->faker->creditCardDetails();
         $creditCard['name'] = $fullName;
-        $creditCard['cvc'] = fake()->numberBetween(100, 999);
+        $creditCard['cvc'] = $this->faker->numberBetween(100, 999);
 
         $banking = [
-            'IBAN' => fake()->iban('US'),
+            'IBAN' => $this->faker->iban('US'),
         ];
 
         return compact(
