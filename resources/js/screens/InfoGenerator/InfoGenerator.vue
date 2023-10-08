@@ -3,6 +3,10 @@
     <DevToolCard>
       <p class="card-text mb-4">
         Quickly generate fake person data for your testing purposes 💼
+
+        <br />
+        <br />
+        P/s: only US info at the moment, we'll roll out other countries soon!
       </p>
 
       <div>
@@ -144,6 +148,21 @@
           />
         </div>
       </div>
+      <div class="mt-2">
+        <button
+          class="btn btn-default"
+          @click="isViewingJson = !isViewingJson"
+        >
+          {{ isViewingJson ? 'Hide' : 'View' }} JSON
+        </button>
+      </div>
+      <div class="mt-2">
+        <DevToolCodeEditor
+          v-if="isViewingJson"
+          :model-value="JSON.stringify(fakePerson, null, 2)"
+          language="json"
+        />
+      </div>
     </DevToolCard>
   </DevToolzPageLayout>
 </template>
@@ -156,10 +175,12 @@ import { ref } from 'vue';
 import { apiClient } from '../../utils/api-client';
 import * as ulidLib from 'ulid';
 import { FakePerson } from './InfoGenerator.types';
+import DevToolCodeEditor from '../../components/DevToolCodeEditor/DevToolCodeEditor.vue';
 
 const isLoading = ref(false);
 
 const fakePerson = ref<FakePerson>();
+const isViewingJson = ref(false);
 
 const onGenerate = async () => {
   if (isLoading.value) {
@@ -167,6 +188,7 @@ const onGenerate = async () => {
   }
 
   isLoading.value = true;
+  isViewingJson.value = false;
 
   const res = await apiClient
     .post<FakePerson>('/random-person')
