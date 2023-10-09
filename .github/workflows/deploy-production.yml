@@ -21,7 +21,7 @@ jobs:
               - 'routes/**'
       - uses: superfly/flyctl-actions/setup-flyctl@master
         if: steps.changes.outputs.src == 'true'
-      - run: flyctl deploy --remote-only --wait-timeout 300
+      - run: flyctl deploy --wait-timeout 300
         if: steps.changes.outputs.src == 'true'
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
